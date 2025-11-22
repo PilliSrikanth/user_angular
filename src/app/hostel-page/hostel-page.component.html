@@ -1,0 +1,131 @@
+<div class="hostel-page">
+  <!-- TOP SEARCH BAR -->
+  <div class="top-bar">
+    <div class="h-i"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+
+    <div class="search">
+      <i class="fa fa-map-marker"></i>
+      <span>Chaitanyapuri</span>
+      <i class="fa fa-chevron-down"></i>
+    </div>
+
+    <div class="h-i"><i class="fa-regular fa-bell"></i></div>
+  </div>
+
+  <!-- Search bar -->
+  <div class="searchbar">
+    <input type="text" name="text" placeholder="search place..." />
+  </div>
+
+  <div class="top-section">
+    <img class="main-img" [src]="mainImage" />
+  </div>
+
+  <h2 class="title">{{ hostel?.name }}</h2>
+
+  <!-- Room stats -->
+  <div class="stats" *ngIf="hostel">
+    <div class="stat" *ngIf="hostel.vacancy?.twoSharing > 0">
+      <div
+        class="icon-box"
+        [class.active]="selectedSharing === 'twoSharing'"
+        (click)="selectSharing('twoSharing')"
+      >
+        <img src="" alt="img1" />
+        <span>{{ hostel.roomSharing?.twoSharing }}</span>
+      </div>
+      <p>2 - ({{ hostel.vacancy.twoSharing }})</p>
+    </div>
+
+    <div class="stat" *ngIf="hostel.vacancy?.threeSharing > 0">
+      <div
+        class="icon-box"
+        [class.active]="selectedSharing === 'threeSharing'"
+        (click)="selectSharing('threeSharing')"
+      >
+        <img src="" alt="img2" />
+        <span>{{ hostel.roomSharing?.threeSharing }}</span>
+      </div>
+      <p>3 - ({{ hostel.vacancy.threeSharing }})</p>
+    </div>
+
+    <div class="stat" *ngIf="hostel.vacancy?.fourSharing > 0">
+      <div
+        class="icon-box"
+        [class.active]="selectedSharing === 'fourSharing'"
+        (click)="selectSharing('fourSharing')"
+      >
+        <img src="" alt="img3" />
+        <span>{{ hostel.roomSharing?.fourSharing }}</span>
+      </div>
+      <p>4 - ({{ hostel.vacancy.fourSharing }})</p>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <button class="btn primary" [routerLink]="['/chat', hostel?.ownerId, hostel?._id]">
+    Message Now
+  </button>
+
+  <button class="btn enroll" (click)="sendRequest()">Request to enroll</button>
+
+  <!-- Pay Now Button -->
+<!-- Pay Now Button --
+<button 
+  class="btn primary" 
+  (click)="BuyNowHandler()">
+  Pay Now (₹{{ getSelectedSharingPrice() }})
+</button>-->
+
+
+  <!-- Render PayU form -->
+  <div [innerHtml]="formHtml"></div>
+
+  <!-- Hostel Details -->
+  <div class="details-box">
+    <h3>Details</h3>
+    <p><b>Name:</b> {{ hostel?.ownerName }}</p>
+    <p><b>Contact:</b> {{ hostel?.ownerPhone }}</p>
+    <p><b>Location:</b> {{ hostel?.area }}</p>
+  </div>
+
+  <div class="description">
+    <h3>Description:</h3>
+    <p>{{ hostel?.description }}</p>
+  </div>
+
+  <div class="features">
+    <h3>Key Features:</h3>
+    <ul>
+      <li>100 well-appointed deluxe and suite rooms</li>
+      <li>Signature restaurant…</li>
+    </ul>
+  </div>
+
+  <!-- Reviews -->
+  <div class="ratings">
+    <h3>Reviews</h3>
+
+    <div class="star-rating">
+      <span *ngFor="let star of [1,2,3,4,5]" 
+            (click)="reviewRating = star"
+            [class.filled]="star <= reviewRating">
+        ★
+      </span>
+    </div>
+    <p>Your rating: {{ reviewRating }}⭐</p>
+
+    <div class="rate-input">
+      <input [(ngModel)]="reviewText" placeholder="Write your review..." />
+      <button class="send primary small" (click)="submitReview()">Send</button>
+    </div>
+
+    <div class="rating-card" *ngFor="let item of ratings">
+      <img [src]="item.userId?.image" [alt]="item.userId?.name" />
+      <div class="content">
+        <h4>{{ item.userId?.name || 'Anonymous' }} <span>{{ item.rating }}⭐</span></h4>
+        <p>{{ item.comment }}</p>
+      </div>
+    </div>
+  </div>
+</div>

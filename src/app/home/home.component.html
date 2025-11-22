@@ -1,0 +1,114 @@
+<div class="mobile-frame">
+
+  <!-- TOP SEARCH BAR -->
+<div class="top-bar">
+  <div class="h-i">
+    <i class="fa-solid fa-ellipsis-vertical"></i>
+  </div>
+
+  <div class="search">
+    <i class="fa fa-map-marker"></i>
+    <span>{{currentPlace}}</span>
+    <i class="fa fa-chevron-down"></i>
+  </div>
+
+  <div class="h-i" routerLink="/notification">
+    <i class="fa-regular fa-bell"></i>
+  </div>
+</div>
+
+<!--searchbar-->
+<div class="searchbar">
+  <input type="text" 
+         [(ngModel)]="searchText"
+         (input)="onSearch()" 
+         placeholder="search place...">
+</div>
+
+
+
+
+  <!-- BANNER IMAGE -->
+   <div class="banner">
+        <img src="https://media.istockphoto.com/id/814423752/photo/eye-of-model-with-colorful-art-make-up-close-up.jpg?s=1024x1024&w=is&k=20&c=NQtm4v1Uzp2luv-6f3qORcq9pDtz2H56p8g9Xix8cY0=" />
+   </div>
+  <!-- Category Title -->
+  <h3 class="Category">Category</h3>
+
+
+  <!-- Category Buttons -->
+<div class="category-buttons">
+  <button *ngFor="let c of categories"
+          (click)="filterByCategory(c)"
+          [class.active]="selectedCategory==c">
+    {{ c | uppercase }}
+  </button>
+</div>
+
+
+
+  <!-- Nearby Title -->
+   <div class="section-title">
+  <h3>Nearby</h3>
+  <p>see all</p>
+   </div>
+
+  <!-- LIST CARDS -->
+<div class="hostel-list">
+  <div class="hostel-card" 
+       *ngFor="let item of NearbyHostels" 
+       (click)="openHostel(item._id)">
+    <img [src]="item.image" />
+    <div class="info">
+      <p>{{item.name}}</p>
+      <span class="rating">{{item.rating}}</span>
+    </div>
+  </div>
+</div>
+
+
+    <!-- top rating Title -->
+   <div class="section-title">
+  <h3>Top rating</h3>
+  <p>see all</p>
+   </div>
+
+  <!-- LIST CARDS -->
+<div class="hostel-list">
+  <div class="hostel-card" 
+       *ngFor="let item of topHostels" 
+       (click)="openHostel(item._id)">
+    <img [src]="item.image" />
+    <div class="info">
+      <p>{{item.name}}</p>
+      <span class="rating">{{item.rating}}</span>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Nearby Title -->
+   <div class="section-title">
+  <h3>All</h3>
+  <p>see all</p>
+   </div>
+
+  <!-- LIST CARDS -->
+<div class="hostel-list">
+  <div class="hostel-card" 
+       *ngFor="let item of hostels" 
+       (click)="openHostel(item._id)">
+    <img [src]="item.image" />
+    <div class="info">
+      <p>{{item.name}}</p>
+      <span class="rating">{{item.rating}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="hostel">
+  <button class="hostel-btn" routerLink="/payment">
+    <i class="fa-solid fa-building-columns"></i> <!-- Hostel icon -->
+  </button>
+</div>
+  </div>

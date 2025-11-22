@@ -1,0 +1,52 @@
+<div class="chat-page">
+
+  <!-- header -->
+  <div class="chat-header">
+    <i class="fa-solid fa-arrow-left" (click)="goBack()"></i>
+    <h3>{{ ownerName }}</h3>
+    <i class="fa-solid fa-phone"></i>
+  </div>
+
+  <!-- chat body -->
+  <div class="chat-body">
+<div *ngFor="let m of messages"
+     class="msg"
+     [ngClass]="[
+        m.senderType === 'user' ? 'me' : 'other',
+        m.message.length > 30 ? 'long' : 'short'
+     ]">
+  {{m.message}}
+</div>
+
+  <div class="message-box" *ngIf="selectedRequest">
+    <p><strong>Request ID:</strong> {{ selectedRequest._id }}</p>
+    <p><strong>User ID:</strong> {{ selectedRequest.userId }}</p>
+    <p><strong>Owner ID:</strong> {{ selectedRequest.ownerId }}</p>
+    <p><strong>Hostel ID:</strong> {{ selectedRequest.hostelId }}</p>
+    <p><strong>Status:</strong> {{ selectedRequest.status | titlecase }}</p>
+    <p><strong>Sharing Type:</strong> {{ selectedRequest.sharingType }}</p>
+    <p><strong>Created At:</strong> {{ selectedRequest.createdAt | date:'medium' }}</p>
+  </div>
+
+  <div class="btn-group" *ngIf="selectedRequest?.status === 'pending'">
+    <button class="decline" (click)="onDecline()">Decline</button>
+    <button class="accept" (click)="onAccept()">Accept</button>
+  </div>
+
+  </div>
+
+  <!-- chat input -->
+  <div class="chat-input">
+    <input type="text" placeholder="Write your message"
+           [(ngModel)]="messageText">
+
+    <div class="mic">
+        <i class="fa-solid fa-microphone"></i>
+    </div>
+
+    <button class="send-btn" (click)="send()">
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </div>
+
+</div>

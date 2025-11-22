@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">←</button>
+    <h2>owner name</h2>
+    <button class="phone-btn">📞</button>
+  </div>
+
+<div *ngFor="let req of requests" class="request-card">
+  <p><strong>Request ID:</strong> {{ req._id }}</p>
+  <p><strong>User ID:</strong> {{ req.userId }}</p>
+  <p><strong>Owner ID:</strong> {{ req.ownerId }}</p>
+  <p><strong>Hostel ID:</strong> {{ req.hostelId }}</p>
+  <p><strong>Status:</strong> {{ req.status | titlecase }}</p>
+  <p><strong>Sharing Type:</strong> {{ req.sharingType }}</p>
+  <p><strong>Created At:</strong> {{ req.createdAt | date:'medium' }}</p>
+
+  <div class="btn-group" *ngIf="req.status === 'pending'">
+    <button class="decline" (click)="onDecline(req)">Decline</button>
+    <button class="accept" (click)="onAccept(req)">Accept</button>
+  </div>
+</div>
+
+<p *ngIf="requests.length === 0">No requests found.</p>
+
+
+  <div class="chat-input">
+    <input type="text" placeholder="Write your message" />
+    <button class="send-btn">➤</button>
+  </div>
+</div>

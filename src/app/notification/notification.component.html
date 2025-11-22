@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">←</button>
+    <h2>Notifications</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="request-list">
+    <div class="request-card" *ngFor="let n of notifications" (click)="openNotification(n)">
+      <div class="avatar"></div>
+      <span class="hostel-name">{{ n.message }}</span>
+      <span class="arrow">›</span>
+    </div>
+  </div>
+</div>
