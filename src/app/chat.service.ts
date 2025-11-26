@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ChatService {
 
-  baseUrl = "http://localhost:3200/api/chat";
+  baseUrl = "https://hostel-backend-cfh3.onrender.com/api/chat";
 
   constructor(private http:HttpClient){}
 

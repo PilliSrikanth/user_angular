@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
-  private apiUrl = 'http://localhost:3200/api/notification';
+  private apiUrl = 'https://hostel-backend-cfh3.onrender.com/api/notification';
 
   constructor(private http: HttpClient) {}
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_BASE = 'http://localhost:3200/api/users'; // <-- change to your backend
+const API_BASE = 'https://hostel-backend-cfh3.onrender.com/api/users'; // <-- change to your backend
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
