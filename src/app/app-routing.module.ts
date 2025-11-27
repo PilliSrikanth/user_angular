@@ -14,7 +14,7 @@ import { TestComponent } from './test/test.component';
 import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component:LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path:'login', component:LoginComponent},
   { path:'home', component:HomeComponent},
