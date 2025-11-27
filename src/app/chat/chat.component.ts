@@ -3,7 +3,6 @@ import { ChatService } from '../chat.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { RequestService } from '../request.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +20,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   selectedRequest: any;
 
   // socket listener
-  messageSub!: Subscription;
+  messageSub!: any;
 
   constructor(
     private chatService: ChatService,
